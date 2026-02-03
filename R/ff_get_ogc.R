@@ -8,11 +8,27 @@
 #' @param n_directions Integer. Number of oblique directions to compute.
 #'
 #' @return A \code{SpatRaster} with oblique coordinate layers.
+#' @details
+#' This function depends on the package \code{OGC}, which is not available on
+#' CRAN. Users must install it manually using:
+#'
+#' \preformatted{
+#' devtools::install_bitbucket("abmoeller/ogc/rPackage/OGC")
+#' }
+
 #'
 #' @export
 ff_get_ogc <- function(dem, n_directions = 6) {
 
   # ---- Checks --------------------------------------------------------------
+  if (!requireNamespace("OGC", quietly = TRUE)) {
+    stop(
+      "El paquete 'OGC' no está instalado.\n",
+      "Instálelo manualmente desde Bitbucket con:\n\n",
+      "  devtools::install_bitbucket('abmoeller/ogc/rPackage/OGC')\n"
+    )
+  }
+
   if (!inherits(dem, "SpatRaster")) {
     stop("`dem` must be a SpatRaster.", call. = FALSE)
   }
