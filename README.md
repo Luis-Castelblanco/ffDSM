@@ -2,12 +2,7 @@
 # ffDSM
 
 <!-- badges: start -->
-Imports:
-    terra,
-    sf,
-    rsi,
-    OGC,
-    elevatr
+
 
 <!-- badges: end -->
 
@@ -106,15 +101,91 @@ Contributions, feedback, and issue reports are welcome.
 You can install the development version of ffDSM like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+remotes::install_github("https://github.com/Luis-Castelblanco/ffDSM")
 ```
 
 ## Example
+Imports:
+    terra,
+    sf,
+    rsi,
+    OGC,
+    elevatr
 
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(ffDSM)
-## basic example code
+
+library(sf)
+
+
+# Point creation (orden: x = longitud, y = latitud)
+punto <- st_sfc(st_point(c(-75.77158, 2.246706)), crs = 4326)
+
+# Convert to sf object and create buffer
+punto_sf <- st_sf(geometry = punto)
+aoi <- st_buffer(punto_sf, dist = 5000) # Buffer de 5 km
+
+# Download DEM
+terra::plot(aoi) 
+dem <- ff_get_dem(aoi, clip = "locations")
+terra::plot(dem)
+
+
+# Derive terrain covariates using SAGA GIS
+covs_terrain <- ff_get_terrain(
+  dem,
+  saga_path = "C:/Program Files/SAGA/saga_cmd.exe",
+  tools   = "basic",
+  cores   = 4,
+  verbose = TRUE
+)
+terra::plot(covs_terrain)
+
+# Obtain Oblique Geographic Coordinates as covariates
+ogc <- ff_get_ogc(
+  dem,
+  n_directions = 6
+)
+terra::plot(ogc)
+
+# Download remote sensing indices from Sentinel-1 and Sentinel-2
+rs_indces <- ff_get_rs_indices(
+  aoi,
+  dem,
+  sensor = c("S2", "S1"),
+  dates_S1 = c("2023-12-01", "2024-02-01"),
+  dates_S2 = c("2024-01-22", "2024-01-24"),
+  s2_composite = "median",
+  exclude_domains = c("urban", "snow"),
+  verbose = TRUE
+)
+terra::plot(rs_indces[[2]])
+
+# Download climate variables from CHELSA
+clim <- ff_get_climate(
+    dem,
+    aoi,
+    variables = c("bio01"),
+    overwrite = FALSE,
+    crop = TRUE
+)
+terra::plot(clim)
+
+# Stack all covariates
+covs <- ff_stack_covariates(
+    dem,
+    covs_terrain ,
+    ogc,
+    clim,
+    rs_indces,
+    resample_method = "near",
+    crop = TRUE,
+    remove_constant = TRUE,
+    verbose = TRUE
+)
+terra::plot(covs)
+names(covs)
 ```
 

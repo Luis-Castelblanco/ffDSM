@@ -21,3 +21,8 @@ Downloads a Digital Elevation Model (DEM) from the ALOS global dataset
 using the \code{elevatr} package. The AOI is automatically projected to
 an appropriate UTM coordinate reference system.
 }
+\details{
+This function requires a valid OpenTopography API key to be set as an
+environment variable named \code{OPENTOPOGRAPHY_API_KEY}. The key can be
+obtained for free from https://opentopography.org/blog/introducing-api-keys-access-opentopography-global-datasets.
+}

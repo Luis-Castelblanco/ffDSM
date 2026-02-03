@@ -8,7 +8,6 @@
 #' @param sensor Character vector. One or both of \code{"S2"}, \code{"S1"}.
 #' @param dates_S1, dates_S2 Character. Start and end dates range (c(YYYY-MM-DD,YYYY-MM-DD)).
 #' @param s2_composite Character. Composite function for Sentinel-2.
-#' @param mask_s2 Logical. Apply SCL mask for Sentinel-2.
 #' @param exclude_domains Character. Index domains to exclude.
 #' @param verbose Logical.
 #'
@@ -22,7 +21,6 @@ ff_get_rs_indices <- function(
     dates_S1,
     dates_S2,
     s2_composite = "median",
-    mask_s2 = TRUE,
     exclude_domains = c("urban", "snow"),
     verbose = TRUE
 ) {
@@ -86,8 +84,8 @@ ff_get_rs_indices <- function(
       start_date = dates_S2[1],
       end_date   = dates_S2[2],
       composite_function = s2_composite,
-      mask_band = if (mask_s2) "SCL" else NULL,
-      mask_function = if (mask_s2) rsi::sentinel2_mask_function else NULL,
+      mask_band = "SCL",
+      mask_function = rsi::sentinel2_mask_function,
       output_filename = tempfile(fileext = ".tif")
     )
 

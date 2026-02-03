@@ -11,7 +11,6 @@ ff_get_rs_indices(
   dates_S1,
   dates_S2,
   s2_composite = "median",
-  mask_s2 = TRUE,
   exclude_domains = c("urban", "snow"),
   verbose = TRUE
 )
@@ -26,8 +25,6 @@ ff_get_rs_indices(
 \item{dates_S1, }{dates_S2 Character. Start and end dates range (c(YYYY-MM-DD,YYYY-MM-DD)).}
 
 \item{s2_composite}{Character. Composite function for Sentinel-2.}
-
-\item{mask_s2}{Logical. Apply SCL mask for Sentinel-2.}
 
 \item{exclude_domains}{Character. Index domains to exclude.}
 

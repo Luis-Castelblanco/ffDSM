@@ -10,6 +10,10 @@
 #'   \code{"bbox"} (default), or \code{"locations"}.
 #'
 #' @return A DEM raster projected in a UTM coordinate reference system.
+#' @details
+#' This function requires a valid OpenTopography API key to be set as an
+#' environment variable named \code{OPENTOPOGRAPHY_API_KEY}. The key can be
+#' obtained for free from https://opentopography.org/blog/introducing-api-keys-access-opentopography-global-datasets.
 #'
 #' @export
 ff_get_dem <- function(aoi, clip = "bbox") {

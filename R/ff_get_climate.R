@@ -71,12 +71,12 @@ ff_get_climate <- function(
   # =============================
   chelsa_urls <- c(
     bio01 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio01/1981-2010/CHELSA_bio01_1981-2010_V.2.1.tif",
-    # bio02 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio02/1981-2010/CHELSA_bio02_1981-2010_V.2.1.tif",
-    # bio03 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio03/1981-2010/CHELSA_bio03_1981-2010_V.2.1.tif",
-    # bio04 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio04/1981-2010/CHELSA_bio04_1981-2010_V.2.1.tif",
+    bio02 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio02/1981-2010/CHELSA_bio02_1981-2010_V.2.1.tif",
+    bio03 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio03/1981-2010/CHELSA_bio03_1981-2010_V.2.1.tif",
+    bio04 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio04/1981-2010/CHELSA_bio04_1981-2010_V.2.1.tif",
     bio05 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio05/1981-2010/CHELSA_bio05_1981-2010_V.2.1.tif",
     bio06 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio06/1981-2010/CHELSA_bio06_1981-2010_V.2.1.tif",
-    # bio07 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio07/1981-2010/CHELSA_bio07_1981-2010_V.2.1.tif",
+    bio07 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio07/1981-2010/CHELSA_bio07_1981-2010_V.2.1.tif",
     bio08 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio08/1981-2010/CHELSA_bio08_1981-2010_V.2.1.tif",
     bio09 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio09/1981-2010/CHELSA_bio09_1981-2010_V.2.1.tif",
     bio10 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio10/1981-2010/CHELSA_bio10_1981-2010_V.2.1.tif",
@@ -89,7 +89,7 @@ ff_get_climate <- function(
     bio17 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio17/1981-2010/CHELSA_bio17_1981-2010_V.2.1.tif",
     bio18 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio18/1981-2010/CHELSA_bio18_1981-2010_V.2.1.tif",
     bio19 = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/bio19/1981-2010/CHELSA_bio19_1981-2010_V.2.1.tif",
-    # kg5   = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/kg5/1981-2010/CHELSA_kg5_1981-2010_V.2.1.tif",
+    kg5   = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/kg5/1981-2010/CHELSA_kg5_1981-2010_V.2.1.tif",
     npp   = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/npp/1981-2010/CHELSA_npp_1981-2010_V.2.1.tif"
   )
   # =============================
