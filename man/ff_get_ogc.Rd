@@ -19,3 +19,11 @@ Computes oblique geographic coordinates based on a DEM following the
 approach of Møller et al, 2020 (https://doi.org/10.5194/soil-6-269-2020). These covariates capture broad spatial trends
 and are useful as baseline predictors in Digital Soil Mapping.
 }
+\details{
+This function depends on the package \code{OGC}, which is not available on
+CRAN. Users must install it manually using:
+
+\preformatted{
+devtools::install_bitbucket("abmoeller/ogc/rPackage/OGC")
+}
+}

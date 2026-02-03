@@ -24,7 +24,7 @@ ff_get_climate <- function(
   # 0. Dependencias
   # =============================
   if (!requireNamespace("terra", quietly = TRUE)) {
-    stop("El paquete 'terra' es requerido.")
+    stop("The 'terra' package is required.")
   }
   library(terra)
 
@@ -32,36 +32,36 @@ ff_get_climate <- function(
   # 1. Validaciones DEM
   # =============================
   if (!inherits(dem, "SpatRaster")) {
-    stop("`dem` debe ser un objeto SpatRaster.")
+    stop("``dem` must be a SpatRaster object.")
   }
 
   if (is.na(crs(dem))) {
-    stop("El DEM no tiene CRS definido.")
+    stop("The DEM does not have a defined CRS.")
   }
 
   if (is.lonlat(dem)) {
     stop(
-      "El DEM está en coordenadas geográficas (lon/lat). ",
-      "Debe estar en coordenadas planas (ej. UTM)."
+      "The DEM is in geographical coordinates (long/lat). ",
+      "It must be in planar coordinates (e.g., UTM)."
     )
   }
 
   # =============================
-  # 2. Validaciones AOI
+  # 2. AOI Validations
   # =============================
   if (inherits(aoi, "sf")) {
     aoi.clim <- vect(aoi)
   }
 
   # if (!inherits(aoi, "SpatVector")) {
-  #   stop("`aoi` debe ser un objeto sf o SpatVector.")
+  #   stop("`aoi` must be an sf object or SpatVector.")
   # }
 
   if (is.na(crs(aoi))) {
-    stop("El AOI no tiene CRS definido.")
+    stop("The AOI does not have a defined CRS.")
   }
 
-  # Reproyectar AOI al CRS del DEM
+  # Reproject AOI to DEM CRS
   # if (!same.crs(aoi, dem)) {
   #   aoi <- project(aoi, dem)
   # }
@@ -93,22 +93,22 @@ ff_get_climate <- function(
     npp   = "https://os.unil.cloud.switch.ch/chelsa02/chelsa/global/bioclim/npp/1981-2010/CHELSA_npp_1981-2010_V.2.1.tif"
   )
   # =============================
-  # 4. Resolver opción "all"
+  # 4. Resolve option "all"
   # =============================
   if (length(variables) == 1 && variables == "all") {
     variables <- names(chelsa_urls)
   }
   # =============================
-  # 5. Validar variables
+  # 5. Validate variables
   # =============================
   if (!is.character(variables)) {
-    stop("`variables` debe ser un vector de caracteres o 'all'.")
+    stop("`variables` must be a character vector or 'all'.")
   }
 
   missing_vars <- setdiff(variables, names(chelsa_urls))
   if (length(missing_vars) > 0) {
     stop(
-      "Variables CHELSA no válidas: ",
+      "Invalid CHELSA variables: ",
       paste(missing_vars, collapse = ", ")
     )
   }
@@ -125,7 +125,7 @@ ff_get_climate <- function(
 
 
   # =============================
-  # 7. Descarga + crop
+  # 7. Download + crop
   # =============================
   rasters <- lapply(variables, function(v) {
 
@@ -133,10 +133,10 @@ ff_get_climate <- function(
     dest <- file.path(cache_dir, basename(url))
 
     if (!file.exists(dest) || overwrite) {
-      message("Descargando CHELSA: ", v)
+      message("Downloading CHELSA: ", v)
       download.file(url, dest, mode = "wb", quiet = FALSE)
     } else {
-      message("Usando CHELSA desde cache: ", v)
+      message("Using CHELSA from cache: ", v)
     }
 
     r <- terra::rast(dest)

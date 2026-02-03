@@ -15,7 +15,6 @@
 #' \preformatted{
 #' devtools::install_bitbucket("abmoeller/ogc/rPackage/OGC")
 #' }
-
 #'
 #' @export
 ff_get_ogc <- function(dem, n_directions = 6) {
@@ -23,8 +22,8 @@ ff_get_ogc <- function(dem, n_directions = 6) {
   # ---- Checks --------------------------------------------------------------
   if (!requireNamespace("OGC", quietly = TRUE)) {
     stop(
-      "El paquete 'OGC' no está instalado.\n",
-      "Instálelo manualmente desde Bitbucket con:\n\n",
+      "The 'OGC' package is not installed.\n",
+      "Install it manually from Bitbucket with:\n",
       "  devtools::install_bitbucket('abmoeller/ogc/rPackage/OGC')\n"
     )
   }
