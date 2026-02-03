@@ -36,6 +36,19 @@ ff_get_dem <- function(aoi, clip = "bbox") {
       call. = FALSE
     )
   }
+  api_key <- Sys.getenv("OPENTOPO_KEY")
+
+
+  if (api_key == "") {
+    stop(
+      "The environment variable was not found 'OPENTOPOGRAPHY_API_KEY'.\n",
+      "Configure your OpenTopography API key before using  ff_get_dem().\n",
+      "Go to: https://opentopography.org/blog/introducing-api-keys-access-opentopography-global-datasets.\n",
+      "Then, set the API key in your R environment using:\n",
+      "set_opentopo_key(key)"
+    )
+  }
+
 
   # ---- Project AOI to UTM --------------------------------------------------
   utm_epsg <- .get_utm_epsg(aoi)
