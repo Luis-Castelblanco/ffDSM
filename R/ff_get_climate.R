@@ -11,6 +11,7 @@
 #' @param resample_method Resampling method. Default "bicubic"
 #'
 #' @return terra::SpatRaster
+#'
 #' @export
 ff_get_climate <- function(
     dem,
