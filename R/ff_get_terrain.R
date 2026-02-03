@@ -68,6 +68,7 @@ ff_get_terrain <- function(
     .tool_map[[tl]](saga, dem_filled)
   })
 
+
   # ---- Extract SpatRaster --------------------------------------------------
   rasters <- unlist(outputs, recursive = TRUE)
   rasters <- Filter(function(x) inherits(x, "SpatRaster"), rasters)
