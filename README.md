@@ -2,6 +2,13 @@
 # ffDSM
 
 <!-- badges: start -->
+Imports:
+    terra,
+    sf,
+    rsi,
+    OGC,
+    elevatr
+
 <!-- badges: end -->
 
 **Fast-and-Furious Digital Soil Mapping in R**
@@ -73,6 +80,8 @@ Soil observations + Area of Interest
 → Data preparation and feature selection  
 → Quantile Random Forest modeling  
 → Spatial prediction and uncertainty mapping
+
+*OGC covariates are optional and intended to capture broad spatial trends rather than environmental processes.
 
 ---
 
