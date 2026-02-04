@@ -21,23 +21,23 @@
     saga$ta_compound$compound_basic_terrain_analysis(dem_filled)
   },
 
-  hydrologic = function(saga, dem) {
+  hydrologic = function(saga, dem_filled) {
     saga$ta_compound$compound_hydrologic_terrain_analysis(dem_filled)
   },
 
-  channel_network = function(saga, dem) {
+  channel_network = function(saga, dem_filled) {
     saga$ta_compound$compound_channel_network_analysis(dem_filled)
   },
 
-  terrain_classification = function(saga, dem) {
+  terrain_classification = function(saga, dem_filled) {
     saga$ta_compound$compound_terrain_classification(dem_filled)
   },
 
-  morphometric = function(saga, dem) {
+  morphometric = function(saga, dem_filled) {
     saga$ta_compound$compound_morphometric_terrain_analysis(dem_filled)
   },
 
-  mrvbf = function(saga, dem) {
+  mrvbf = function(saga, dem_filled) {
     saga$ta_morphometry$multiresolution_index_of_valley_bottom_flatness_mrvbf(dem_filled)
   }
 )
